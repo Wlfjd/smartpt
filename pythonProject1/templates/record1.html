@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=01,maximum-scale =1,max-width=760px">
+	<link href="{{url_for('static',filename='css/style2.css')}}" rel="stylesheet" type="text/css">
+    <H1> {{session['username']}}님의 기록</H1>
+</head>
+<body>
+<div class="result2">
+	<table class="table table-hover table-striped text-center" style=" width: 100%; border: 1px  solid #111114; text-align: center;">
+		<thead class="suljung" style="font-size:20px;">
+			<tr>
+				<h3 class="price" style="font-size: 1.6rem;margin-top:10%; ">squat</h3>
+				<th>운동 날짜</th>
+				<th>세트 수</th>
+				<th>세트 당 횟수</th>
+				<th>시간</th>
+			</tr>
+		</thead>
+	    <tbody>
+			{% for i in data_list_s %}
+			{% if i[3] == session['id'] %}
+			<tr>
+				<td>{{ i[4] }}</td>
+				<td>{{ i[0] }}</td>
+				<td>{{ i[1] }}</td>
+				<td>{{ i[2] }}</td>
+			</tr>
+			{% endif %}
+			{% endfor %}
+		</tbody>
+	</table>
+<table class="table table-hover table-striped text-center" style=" width: 100%; border: 1px  solid #111114; text-align: center;">
+		<thead class="suljung" style="font-size:20px;">
+			<tr >
+				<h3 class="price" style="font-size: 1.6rem">pushup</h3>
+				<th>운동 날짜</th>
+				<th>세트 수</th>
+				<th>세트 당 횟수</th>
+				<th>시간</th>
+			</tr>
+		</thead>
+	    <tbody>
+			{% for i in data_list_p %}
+			{% if i[3] == session['id'] %}
+			<tr>
+				<td>{{ i[4] }}</td>
+				<td>{{ i[0] }}</td>
+				<td>{{ i[1] }}</td>
+				<td>{{ i[2] }}</td>
+			</tr>
+			{% endif %}
+			{% endfor %}
+		</tbody>
+	</table>
+<form action="/main2" method="post">
+	<input type="submit" value="홈으로" style="margin-top:10%;  height: 50px; width: 75px;">
+</form>
+</div>
+</body>
+</html>

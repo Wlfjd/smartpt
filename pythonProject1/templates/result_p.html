@@ -1,0 +1,48 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale =1,max-width=720px">
+    <link href="{{url_for('static',filename='css/style2.css')}}" rel="stylesheet" type="text/css">
+
+    <title>Result</title>
+</head>
+<body>
+<div class="result-main">
+<h1>{{session['username']}} 님의 운동 결과</h1>
+
+<div style= "width: 100%; border: 2px  solid #111114; text-align: center;">
+    <div class="result">
+<div class="suljung"> 설정값 </div>
+<h2>세트 수 = {{p_set}}set</h2>
+<h2>세트 당 횟수 = {{p_count}}번</h2>
+<h2>설정 시간 = {{num1}}초</h2>
+    </div>
+</div>
+
+    <div style="width: 100%; border: 2px  solid #111114; text-align: center;margin-top:10%;">
+<div class="suljung" > 결과값 </div>
+<h2>세트 수 = {{p_set_c}}set</h2>
+<h2>총 횟수 : {{p_count_c}}번</h2>
+        <h2 id="r"></h2>
+</div>
+<script type="text/javascript">
+    save = localStorage.getItem("key")
+    console.log(save)
+    const rT = document.getElementById("r");
+
+    $(document).ready(function(){
+
+        $(".out").attr("value",save);
+    });
+    rT.textContent = "걸린시간 : "+save+"초";
+
+</script></div>
+<form method="GET" action="/main2">
+        <input type="hidden" name="hide" class="out">
+        <button type="submit" class="result-button">홈으로</button>
+    </form>
+</div>
+</body>
+</html>

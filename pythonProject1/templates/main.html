@@ -1,0 +1,40 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5,maximum-scale =0.5">
+         <title>스마트 pt</title>
+        <link href="{{url_for('static',filename='css/style2.css')}}" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+
+    <div class ="main">
+    <div class="pricing-item" style="color: #FCA205;font-family: 'Lobster';text-align: center; font-size: 5rem;font-weight: 1000;margin-top:40%;"> Smart PT </div>
+    <div class="menu">
+
+        <form action="/login_proc" method="post" class="smart" style = "font-size: 2rem";>
+         ID :  <input type="text" name="userid" style = "font-size: 2rem;width: 40%;";>
+        <br>
+        PWD : <input type="password" name="password" style = "font-size: 2rem;width: 40%;";><br>
+        <span class="log">
+        <button type="submit" class="btn btn-primary"  style = "font-size: 1.5rem;width: 40%;";>로그인</button></form></div>
+        <div class="menu2">
+        <form action="/register" method="get">
+        <button type="submit" class="btn btn-primary"  style = "font-size: 1.5rem;width: 40%;";>회원가입</button></form>
+        </span>
+
+        </div>
+    </div>
+
+      </body>
+      </html>
+

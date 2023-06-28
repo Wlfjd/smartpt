@@ -1,0 +1,61 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5,maximum-scale =0.5,max-width=760px">
+        <link href="{{url_for('static',filename='css/style2.css')}}" rel="stylesheet" type="text/css">
+
+    </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8  offset-lg-2">
+                <a>{{session['username']}}님 안녕하세요!</a>
+                <h3 class="mt-5">Live Streaming</h3>
+                <img src="{{ url_for('video_feed_p') }}" width="100%">
+            </div>
+        </div>
+    </div>
+    <div class="timer">
+    <h1 id="timer-text" class="timertext">{{num}}초</h1>
+    <button id="btn-start" class="starttimer">운동 시작</button>
+    <button id="btn-stop" class="stoptimer">운동 정지</button>
+    <button id="btn-end" class="home">운동 종료</button>
+    <script type="text/javascript">
+
+        const timerText = document.getElementById("timer-text");
+        const btnStart = document.getElementById("btn-start");
+        const btnStop = document.getElementById("btn-stop");
+        const btnEnd = document.getElementById("btn-end");
+
+        count = {{num}};
+        count2 = 0;
+        let intervalID;
+
+        btnStart.addEventListener("click",function() {
+            intervalID = setInterval(function() {
+                count -= 1;
+                count2 += 1;
+                const value = count2
+                localStorage.setItem("key",value)
+                console.log(count)
+                console.log(count2)
+                timerText.textContent = count+"초";
+                if (count==0) {
+                    location.replace('http://192.168.0.112:8000/result_p');
+                    timerText.textContent = 0+"초";
+            }},1000);
+        });
+        btnStop.addEventListener("click",function() {
+            clearInterval(intervalID);
+        });
+        btnEnd.addEventListener("click",function() {
+            location.replace('http://192.168.0.112:8000/result_p');
+        });
+    </script>
+    </div>
+    </body>
+
+</html>

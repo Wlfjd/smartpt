@@ -1,0 +1,29 @@
+{% if login == True%}
+<h3>로그인 성공. {{username}}님 어서오세여!</h3>
+<a href = {{ url_for("logout") }}>로그아웃</a>
+
+{%else %} 
+<form methods = "get" id = "login" action = {{url_for("login")}}>
+    <input type = "id" id = "loginID" name=" loginId" placeholder="ID">
+    <button type="submit" class="login">로그인</button>
+</form>
+
+{%endif%}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>login_form.html</title>
+</head>
+<body>
+<form action="/login_proc" method="post">
+    ID : <input type="text" name="userid"><br>
+    PWD : <input type="password" name="password"><br>
+    NAME : <input type="text" name="username"><br>
+    <input type="submit" value="로그인">
+</form>
+
+</body>
+</html>
+

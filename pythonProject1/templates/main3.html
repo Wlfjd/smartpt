@@ -1,0 +1,134 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>스마트 pt</title> 
+        <link href= "../style.css" rel="stylesheet" type="text/css">
+        <style> 
+          .menu { height: 100px; 
+            border-bottom: 1px solid black;
+            display: flex;
+            align-items: center;
+            } 
+            
+            .menu-right-item{
+             display: flex;
+             font-size: 0.8rem;
+            }
+            .menu-item{
+              margin-left: 10px;
+            
+            }
+            .pricing-item{
+              color : gray;
+              text-align: center;
+              font-size: 5rem;
+              font-weight: 1000;
+              margin: 70px;
+            }
+            .main{
+              width: 800px;
+              margin: 0 auto;
+              margin-top: 150px;  
+             
+            }
+            .price-item{
+              
+              width: 380px;
+              height: 200px;
+              border: 1px solid black;
+              margin: 20px;
+              border-radius: 4px;
+              text-align: center;
+              margin: 0 auto;
+              
+            }
+            .price{
+              display: flex;
+            }
+            .price-item-title{
+              font-weight: bold;
+              font-size: 1.3rem;
+              height: 35px;
+              text-align: center;
+              background: rgba(0,0,0,.03);
+              line-height: 30px;
+              border-bottom: 1px solid black;
+            }
+            .price-item-price{
+              font-size: 0.95rem;
+            
+              padding: 20px;
+            }
+
+            .price-item-detail{
+              font-style: italic;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <form action="/logout" method="get">
+      <input type="submit" value="로그아웃"></form>
+      
+
+    <div class=form-group>
+      {%if userid%}
+      {{userid}}<a>님 안녕하세요!</a><br>
+      <a href="/logout">로그아웃</a>
+      {%endif%}
+      
+    <div class ="main">
+      <div class="pricing-item"> 스마트 PT </div>
+      <div class ="price"> 
+          <div class="price-item">
+          <div class="price-item-title">일반운동 모드 </div>
+          <div class="price-item-price"> 본인에게 맞는 운동을 추천받을 수 있습니다. </div>
+              <div class="price-item-detail"> 신체지수 측정</div>
+              <div class="price-item-detail"> 신체불균형 측정</div><br>
+              <form action="/setting" method="get">
+              <input type="submit" value="측정하러 가기">
+              </form>
+          </div>
+  
+          <div class="price-item">
+          <div class="price-item-title">챌린지 모드 </div>
+          <div class="price-item-price"> 레벨 1,2,3 을 선택하여 운동할 수 있습니다. </div><br>
+              <div class="price-item-detail"> </div>
+              <form action="/setting_s" method="get">
+                <input type="submit" value="스쿼트">
+                </form>
+                <form action="/setting_p" method="get">
+                  <input type="submit" value="푸쉬업">
+                  </form>
+          </div>
+
+          <div class="price-item">
+          <div class="price-item-title">코스추천 모드 </div>
+          <div class="price-item-price"> 스쿼트와 푸쉬업 중 선택하여 운동할 수 있습니다. </div><br>
+              <div class="price-item-detail"> </div>
+              <form action="/setting_s" method="get">
+                <input type="submit" value="스쿼트">
+                </form>
+                <form action="/setting_p" method="get">
+                  <input type="submit" value="푸쉬업">
+                  </form>
+
+                <form action="/pushup2" method="get">
+                  <input type="submit" value="이어하기">
+                  </form>
+          </div>
+          </div>
+      </div>
+      </body>
+      </html>

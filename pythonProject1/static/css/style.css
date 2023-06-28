@@ -1,0 +1,26 @@
+  .menu {
+     height: 100px;
+     margin-top: 150px;
+
+     width: 700px;
+
+     margin: 200px;
+     }
+     .pricing-item{
+
+       text-align: center;
+       font-size: 5rem;
+       font-weight: 750;
+       margin: 70px;
+     }
+    .main{
+
+       width: 750px;
+       margin: 0 auto;
+       margin-top: 150px;
+
+     }
+     .log{
+       width: 400px;
+       text-align: center;
+     }

@@ -1,0 +1,93 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5,maximum-scale =0.5,max-width=760px">
+
+        <h1>{{session['username']}}님 안녕하세요!</h1>
+        <title>스마트 pt</title>
+        <link href="{{url_for('static',filename='css/style2.css')}}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <form action="/record1" method="get">
+                <input type="submit" value="기록 확인" style="font-size:1.6em">
+                </form>
+    <form action="/logout" method="get">
+      <input type="submit" class="girok" style="font-size:1.6em" value="로그아웃"></form>
+
+
+    <div class=form-group>
+      {%if userid%}
+      {{userid}}<a>님 안녕하세요!</a><br>
+      <a href="/logout" >로그아웃</a>
+      {%endif%}
+
+    <div class ="main">
+      <div class="pricing-item"> Smart PT </div>
+      <div class ="price">
+          <div class="price-item">
+          <div class="price-item-title" >challenge mode </div>
+          <div class="price-item-price" > 레벨 1,2,3 을 선택하여 운동할 수 있습니다. </div>
+              <div class="price-item-price1">1단계 = 3set 3회 90초, 2단계 = 3set 8회 150초, 3단계 = 5set 10회 300초 </div>
+
+              <div class="a">
+              <div class="price-item-detail">Squat </div>
+
+              <form action="/challenge_s1" method="get">
+
+                <input type="submit" value="1" class = "num-button">
+                </form>
+              <form action="/challenge_s2" method="get">
+                <input type="submit" value="2" class = "num-button">
+                </form>
+              <form action="/challenge_s3" method="get">
+                <input type="submit" value="3" class = "num-button">
+                </form>
+                     </div>
+              <div class="a">
+              <div class="price-item-detail" >Pushup </div>
+
+              <form action="/challenge_p1" method="get">
+                <input type="submit" value="1" class = "num-button">
+                </form>
+              <form action="/challenge_p2" method="get">
+                <input type="submit" value="2" class = "num-button">
+                </form>
+              <form action="/challenge_p3" method="get">
+                <input type="submit" value="3" class = "num-button">
+                </form>
+              </div>
+
+          </div>
+          </div>
+        <div class ="price">
+          <div class="price-item">
+          <div class="price-item-title">general mode </div>
+          <div class="price-item-price" style="padding:10px;"> 운동 종류 및 세트, 횟수를 스스로 설정하여 운동할 수 있습니다. </div><br>
+              <div class="price-item-detail"> </div>
+                <div class = "ggingggang">
+              <form action="/setting_s" method="get">
+                <input type="submit" value="squat" class = "ggingggong" style="font-family: 'Lobster';">
+                </form>
+
+                <form action="/setting_p" method="get" style="font-family: 'Lobster';">
+                  <input type="submit" value="pushup" class = "ggingggong"  style="font-family: 'Lobster';">
+                  </form>
+                    </div>
+          </div>
+
+
+      </div>
+      </body>
+      </html>
+
+
